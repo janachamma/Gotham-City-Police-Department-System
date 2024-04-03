@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+
+  def render_404
+    flash[:error] = "We apologize, but this information could not be found."
+    redirect_to home_path
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You are not authorized to take this action. Go away or I shall taunt you a second time"
     redirect_to_home_path

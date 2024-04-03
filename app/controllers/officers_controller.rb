@@ -29,6 +29,8 @@ class OfficersController < ApplicationController
   def show
     @current_assignments = @officer.assignments.where(end_date: nil)
     @past_assignments = @officer.assignments.where.not(end_date: nil)
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end
 
   def edit
