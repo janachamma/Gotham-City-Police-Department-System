@@ -28,14 +28,34 @@ Rails.application.routes.draw do
 
   # Routes for regular HTML views go here...
     # Semi-static page routes
-
+    get 'home', to: 'home#index', as: :home
+    get 'home/about', to: 'home#about', as: :about
+    get 'home/contact', to: 'home#contact', as: :contact
+    get 'home/privacy', to: 'home#privacy', as: :privacy
+    get 'home/search', to: 'home#search', as: :search
     
 
     # Authentication routes
-
-    
+        resources :sessions
+        resources :officers
+         get 'officers/new', to: 'officers#new', as: :signup
+         get 'officer/edit', to: 'officers#edit', as: :edit_current_officer
+          get 'login', to: 'sessions#new', as: :login
+          post 'login', to: 'sessions#create'
+          get 'logout', to: 'sessions#destroy', as: :logout
 
     # Resource routes (maps HTTP verbs to controller actions automatically):
+     resources :crimes
+     resources :units
+     #resources :officers
+     resources :investigations do
+      member do
+        patch 'close'
+      end
+    end   
+      resources :criminals
+
+
 
   
   
@@ -57,5 +77,5 @@ Rails.application.routes.draw do
 
     # You can have the root of your site routed with 'root'
 
-    
+    root 'home#index'
 end
