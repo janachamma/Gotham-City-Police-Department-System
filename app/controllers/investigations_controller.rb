@@ -1,5 +1,5 @@
 class InvestigationsController < ApplicationController
-    before_action :set_investigation, only: [:show, :edit, :update, :destroy, :close]
+    before_action :set_investigation, only: [:show, :edit, :update, :close]
     before_action :check_login
     authorize_resource 
     
@@ -51,15 +51,15 @@ end
     end
   
     # DELETE /investigations/:id
-    def destroy
-      if @investigation.destroy
-        flash[:notice] = "Investigation has been closed."
-        redirect_to investigations_path
-      else
-        flash[:alert] = "Investigation could not be removed."
-        redirect_to @investigation
-      end
-    end
+    # def destroy
+    #   if @investigation.destroy
+    #     flash[:notice] = "Investigation has been closed."
+    #     redirect_to investigations_path
+    #   else
+    #     flash[:alert] = "Investigation could not be removed."
+    #     redirect_to @investigation
+    #   end
+    # end
   
     
     def close
