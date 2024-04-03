@@ -27,8 +27,7 @@ class CriminalsController < ApplicationController
 
   def show
     @suspects = Criminal.where(convicted_felon: false)
-    rescue ActiveRecord::RecordNotFound
-      render_404
+
   end
 
   def edit

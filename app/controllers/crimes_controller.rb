@@ -1,7 +1,7 @@
 
  class CrimesController < ApplicationController
      before_action :set_crime, only: [:edit, :update]
-     # before_action :check_login
+      before_action :check_login
       authorize_resource
   
         # GET /crimes
