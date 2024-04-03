@@ -55,17 +55,17 @@ class UnitsController < ApplicationController
   #     redirect_to units_path
   #   end
   # end
-  def destroy
-    if can_destroy_unit?
-      unit_name = @unit.name
-      @unit.destroy
-      flash[:notice] = "Removed #{unit_name} from the system."
-      redirect_to units_path
-    else
-      flash[:alert] = "Unit cannot be removed because there are officers still assigned."
-      redirect_to @unit
-    end
-  end
+  # def destroy
+  #   if can_destroy_unit?
+  #     unit_name = @unit.name
+  #     @unit.destroy
+  #     flash[:notice] = "Removed #{unit_name} from the system."
+  #     redirect_to units_path
+  #   else
+  #     flash[:alert] = "Unit cannot be removed because there are officers still assigned."
+  #     redirect_to @unit
+  #   end
+  # end
   # def destroy
   #   unit_name = @unit.name # Capture the name before destroying
   #   if @unit.destroy
