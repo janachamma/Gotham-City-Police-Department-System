@@ -52,7 +52,8 @@ Rails.application.routes.draw do
       member do
         patch 'close'
       end
-    end     resources :criminals
+    end     
+    resources :criminals
 
 
 

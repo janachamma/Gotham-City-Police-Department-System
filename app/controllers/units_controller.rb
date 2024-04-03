@@ -59,13 +59,10 @@ class UnitsController < ApplicationController
   
 
   def destroy
-    if @unit.officers.exists?
-      flash[:alert] = "Cannot remove a unit that has officers assigned to it."
+    if @unit.destroy
+      redirect_to units_path, notice: "Removed #{@unit.name} from the system."
+    else 
       render :index
-    else
-      @unit.destroy
-      flash[:notice] = "Removed Major Crimes from the system."
-      redirect_to units_path
     end
   end
 
@@ -79,8 +76,5 @@ class UnitsController < ApplicationController
 
   def unit_params
     params.require(:unit).permit(:active, :name)
-  end
-  def can_destroy_unit?
-    @unit.officers.empty?
   end
 end

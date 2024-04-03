@@ -16,7 +16,7 @@ class OfficersController < ApplicationController
       @officer = Officer.new(officer_params)
     
       if @officer.save
-        flash[:notice] = "Successfully created Eric Blake."
+        flash[:notice] = "Successfully created #{@officer.proper_name}."
         redirect_to officer_path(@officer)
       else
         Rails.logger.info(@officer.errors.full_messages.to_sentence) 

@@ -66,9 +66,6 @@ end
         if @investigation.update(date_closed: Date.current, solved: true) # Assuming closing an investigation also marks it as solved
           flash[:notice] = 'Investigation has been closed.'
           redirect_to investigations_path
-        else
-          flash[:alert] = 'The investigation could not be closed.'
-          redirect_to @investigation
         end
       end
     

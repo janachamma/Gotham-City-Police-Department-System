@@ -45,9 +45,6 @@ class CriminalsController < ApplicationController
     if @criminal.destroy
       flash[:notice] = "Removed #{name} from the system."
       redirect_to criminals_path
-    else
-      flash[:alert] = 'Criminal could not be removed.'
-      redirect_to(@criminal)
     end
   end
   
