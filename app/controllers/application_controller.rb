@@ -12,10 +12,8 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Seek and you shall find... but not this time"
     redirect_to_home_path
   end
-
   private
 
-  # Handling authentication
   def current_user
     @current_user ||= Officer.find(session[:officer_id]) if session[:officer_id]
   end
