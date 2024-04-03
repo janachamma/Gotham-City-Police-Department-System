@@ -32,7 +32,10 @@ class InvestigationsController < ApplicationController
     def show
   @investigation = Investigation.find(params[:id])
   @current_assignments = @investigation.assignments.where('start_date <= ? AND end_date >= ?', Date.today, Date.today)
-    end
+    rescue ActiveRecord::RecordNotFound
+        render_404
+end
+
   
   
     def edit
