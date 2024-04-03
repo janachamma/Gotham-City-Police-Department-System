@@ -37,7 +37,9 @@ Rails.application.routes.draw do
 
     # Authentication routes
         resources :sessions
-        resources :officers
+        Rails.application.routes.draw do
+          resources :officers
+        end
          get 'officers/new', to: 'officers#new', as: :signup
          get 'officer/edit', to: 'officers#edit', as: :edit_current_officer
           get 'login', to: 'sessions#new', as: :login
