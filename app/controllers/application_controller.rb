@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You are not authorized to take this action. Go away or I shall taunt you a second time"
-    redirect_to_home_path
+    redirect_to home_path
   end
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Seek and you shall find... but not this time"
-    redirect_to_home_path
+    redirect_to home_path
   end
   private
 
