@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       # get 'criminals/enhanced', to: 'criminals#enhanced', as: :enhanced_criminals
       # get 'officers/:id', to: 'officers#show', as: :officer
       # get 'investigations/:id', to: 'investigations#show', as: :investigation
-    
+
     end
   end
 
@@ -33,49 +33,51 @@ Rails.application.routes.draw do
     get 'home/contact', to: 'home#contact', as: :contact
     get 'home/privacy', to: 'home#privacy', as: :privacy
     get 'home/search', to: 'home#search', as: :search
-    
+
 
     # Authentication routes
-        resources :sessions
-        resources :officers
-         get 'officers/new', to: 'officers#new', as: :signup
-         get 'officer/edit', to: 'officers#edit', as: :edit_current_officer
-          get 'login', to: 'sessions#new', as: :login
-          post 'login', to: 'sessions#create'
-          get 'logout', to: 'sessions#destroy', as: :logout
+    get 'login', to: 'sessions#new', as: :login
+    get 'logout', to: 'sessions#destroy', as: :logout
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
+
 
     # Resource routes (maps HTTP verbs to controller actions automatically):
-     resources :crimes
-     resources :units
-     #resources :officers
-     resources :investigations do
+    resources :units
+    resources :officers
+    resources :crimes
+    resources :criminals
+    resources :investigations do
       member do
         patch 'close'
       end
-    end     
-    resources :criminals
+    end
+    resources :sessions, only: [:new, :create, :destroy]
 
 
-
-  
-  
     # Routes for assignments
+    get 'assignments/new', to: 'assignments#new', as: :new_assignment
+    post 'assignments/create', to: 'assignments#create', as: :assignments
+    patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
 
-    
 
     # Routes for crime_investigations
-
-    
+    get 'crime_investigations/new', to: 'crime_investigations#new', as: :new_crime_investigation
+    post 'crime_investigations', to: 'crime_investigations#create', as: :crime_investigations
+    delete 'crime_investigations/:id', to: 'crime_investigations#destroy', as: :remove_crimes
 
     # Routes for investigation_notes
+    get 'investigation_notes/new', to: 'investigation_notes#new', as: :new_investigation_note
+    post 'investigation_notes/create', to: 'investigation_notes#create', as: :investigation_notes
 
-    
 
     # Other custom routes
+    get 'suspects/new', to: 'suspects#new', as: :new_suspect
+    post 'suspects/create', to: 'suspects#create', as: :suspects
+    patch 'suspects/:id/terminate', to: 'suspects#terminate', as: :terminate_suspect
 
-    
 
     # You can have the root of your site routed with 'root'
+    root 'home#index'    
 
-    root 'home#index'
 end
