@@ -1,8 +1,11 @@
 class CrimeInvestigationsController < ApplicationController
-    before_action :set_investigation, only: [:new, :create, :destroy]
+    # before_action :set_investigation, only: [:create, :destroy]
     before_action :set_crime_investigation, only: [:destroy]
+    before_action :check_login
+      authorize_resource
   
     def new
+      
         @investigation = Investigation.find(params[:investigation_id])
     
         @crime_investigation = CrimeInvestigation.new
@@ -13,10 +16,12 @@ class CrimeInvestigationsController < ApplicationController
   
     # POST /investigations/:investigation_id/crime_investigations
     def create
-      @crime_investigation = @investigation.crime_investigations.new(crime_investigation_params)
+      # @investigation = Investigation.find(params[:investigation_id])
+
+      @crime_investigation = CrimeInvestigation.new(crime_investigation_params)
       if @crime_investigation.save
-        flash[:notice] = "Successfully added #{@crime_investigation.crime.name} to #{@investigation.title}."
-        redirect_to investigation_path(@investigation)
+        flash[:notice] = "Successfully added #{@crime_investigation.crime.name} to #{@crime_investigation.investigation.title}."
+        redirect_to investigation_path(@crime_investigation.investigation)
       else
         @crimes_list = Crime.all # Re-populate crimes_list for the form
         render :new
@@ -25,8 +30,10 @@ class CrimeInvestigationsController < ApplicationController
   
    # DELETE /crime_investigations/:id
 def destroy
-    @crime_investigation = CrimeInvestigation.find(params[:id])
-    # investigation = crime_investigation.investigation
+
+    # @crime_investigation = CrimeInvestigation.find(params[:id])
+    # investigation = crime_investigation.investigationS 
+
     @crime_investigation.destroy
     # if crime_investigation.destroy
       flash[:notice] = "Successfully removed a crime from this investigation."
@@ -40,13 +47,10 @@ def destroy
   
     private
   
-    def set_investigation
-      @investigation = Investigation.find(params[:investigation_id])
+    def set_crime_investigation
+      @crime_investigation = CrimeInvestigation.find(params[:id])
     end
   
-    def set_crime_investigation
-      @crime_investigation = @investigation.crime_investigations.find(params[:id])
-    end
   
     def crime_investigation_params
       params.require(:crime_investigation).permit(:crime_id, :investigation_id)
