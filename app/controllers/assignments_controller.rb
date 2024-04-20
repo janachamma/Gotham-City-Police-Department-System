@@ -26,11 +26,11 @@ class AssignmentsController < ApplicationController
 def terminate
   @assignment = Assignment.find(params[:id])
 
-  if @assignment.update(end_date: Date.current) # assuming end_date signifies the termination of an assignment
+  @assignment.update(end_date: Date.current) # assuming end_date signifies the termination of an assignment
     redirect_to officer_path(@assignment.officer), notice: 'Successfully terminated assignment.'
-  else
-    redirect_to officer_path(@assignment.officer), alert: 'Unable to terminate assignment.'
-  end
+  # else
+  #   redirect_to officer_path(@assignment.officer), alert: 'Unable to terminate assignment.'
+  # end
 end
 
     private

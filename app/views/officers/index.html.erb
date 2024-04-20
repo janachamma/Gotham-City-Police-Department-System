@@ -1,0 +1,7 @@
+<!-- Officers index view -->
+<h1>Active Officers in GCPD</h1>
+<% @active_officers.each do |officer| %>
+  <p> Name: <%= link_to officer.name, officer %></p>
+
+  <p> Rank: <%= officer.rank %></p>
+<% end %>

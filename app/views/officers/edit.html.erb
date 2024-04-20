@@ -1,0 +1,8 @@
+<!-- app/views/officers/edit.html.erb -->
+<h1>Edit Officer</h1>
+<%= simple_form_for(@officer, url: officer_path(@officer), method: :patch) do |f| %>
+  <%= f.error_notification %>
+  <%= f.collection_select :rank, Officer::RANKS_LIST.map { |rank| [rank[1], rank[0]] }, :first, :second %>
+  <%= f.button :submit, "Update Officer" %>
+<% end %>
+<%= link_to 'Back', officer_path(@officer) %>

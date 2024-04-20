@@ -25,11 +25,11 @@ class SuspectsController < ApplicationController
   
     # PATCH/PUT /suspects/:id/terminate
     def terminate
-      if @suspect.update(dropped_on: Date.current)
+       @suspect.update(dropped_on: Date.current)
         redirect_to investigation_path(@suspect.investigation), notice: 'Suspect was successfully terminated.'
-      else
-        render :edit 
-      end
+      # else
+      #   render :edit
+      # end
     end
   
     private

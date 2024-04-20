@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
 
   # GET /units/:id
   def show
-    @officers = @unit.officers
+    @officers = @unit.officers.alphabetical.paginate(page:params[:page]).per_page(10)
 
   end
 
@@ -38,6 +38,7 @@ class UnitsController < ApplicationController
   # PATCH/PUT /units/:id
   def update
     if @unit.update(unit_params)
+      flash[:notice] = "Updated unit information"
       redirect_to @unit
     else
       render :edit
@@ -45,17 +46,6 @@ class UnitsController < ApplicationController
   end
 
   
-  # def destroy
-  #   if can_destroy_unit?
-  #     unit_name = @unit.name
-  #     @unit.destroy
-  #     flash[:notice] = "Removed #{unit_name} from the system."
-  #     redirect_to units_path
-  #   else
-  #     flash[:alert] = "Unit cannot be removed because there are officers still assigned."
-  #     redirect_to @unit
-  #   end
-  # end
   
 
   def destroy

@@ -28,6 +28,7 @@ Feature: Authentication
 	Scenario: Navigation exists to link resources
 		Given a logged in commissioner
 	  When I go to the home page
+    Then show me the page
 		And I click on the link "Investigations"
 	  Then I should see "Open Investigations in GCPD"
 	  When I go to the home page

@@ -5,11 +5,11 @@ class InvestigationsController < ApplicationController
     
     # GET /investigations
     def index
-        @open_investigations = Investigation.where(is_open: true)
-        @closed_investigations = Investigation.where(is_open: false)
-        @closed_unsolved = Investigation.where(is_open: false, solved: false)
-        @with_batman = Investigation.where(assigned_to: 'Batman')
-        @unassigned_cases = Investigation.where(assigned_to: nil)
+        @open_investigations = Investigation.is_open
+        @closed_investigations = Investigation.is_closed
+        @closed_unsolved = Investigation.is_closed.unsolved
+        @with_batman = Investigation.with_batman
+        @unassigned_cases = Investigation.unassigned
     end
   
     # GET /investigations/new

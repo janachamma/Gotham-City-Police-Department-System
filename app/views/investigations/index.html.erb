@@ -1,0 +1,23 @@
+<div class="row">  
+  <h4>Open Investigations in GCPD</h4>  
+  <div class="col s9">
+    <div class="card">
+      <div class="card-content">
+      <% if @open_investigations.any? %>
+      <ul>
+    <% @open_investigations.each do |investigation| %>
+      <li>
+        <strong>Title:</strong> <%= investigation.title %><br><br>
+        <strong>Date open:</strong> <%= investigation.date_opened.strftime("%m/%d/%y") %><br><br>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No open cases at this time</p>
+<% end %>
+
+   
+      </div>
+    </div>
+  </div>
+</div>

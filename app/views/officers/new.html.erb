@@ -1,0 +1,16 @@
+<!-- app/views/officers/new.html.erb -->
+<h1>New Officer</h1>
+<%= simple_form_for(@officer, url: officers_path) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :first_name, required: true %>
+  <%= f.input :last_name, required: true %>
+  <%= f.input :ssn, required: true %>
+  <%= f.collection_select :rank, Officer::RANKS_LIST.map { |rank| [rank[1], rank[0]] }, :first, :second %>
+  <%= f.collection_select :unit_id, Unit.all, :id, :name, include_blank: false %>
+  <%= f.input :username, required: true %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, required: true %>
+  <%= f.collection_select :role, Officer.roles.keys.map { |role| [role.humanize, role] }, :second, :first %>
+  <%= f.button :submit, "Create Officer" %>
+<% end %>
+<%= link_to 'Back', officers_path %>

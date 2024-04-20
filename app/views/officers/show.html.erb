@@ -1,0 +1,46 @@
+<h1>Details for <%= @officer.name %></h1>
+<p><strong>
+<%= link_to 'Add a new assignment', new_assignment_path(@officer) %> 
+</strong></p>
+<div id="officers" class="card">
+  <h2> Officer Information for <%= @officer.proper_name %>  </h2>
+  <% officer = @officer %>
+  <ul>
+    <li>
+      <strong>Name:</strong> <%= @officer.name %><br><br>
+      <strong>Current unit:&nbsp;&nbsp;</strong> <%= officer.unit.name %><br><br>
+      <strong>Current rank:&nbsp;&nbsp;</strong> <%= officer.rank %><br><br>
+      <strong>SSN:&nbsp;&nbsp;</strong> <%= @officer.ssn.present? ? @officer.ssn.gsub(/(\d{3})(\d{2})(\d{4})/, '\1-\2-\3') : "" %><br><br>
+      <strong>Active duty?&nbsp;&nbsp; </strong> <%= officer.active ? 'Yes' : 'No' %><br><br>
+ <div id="current_assignments" class="card">
+
+<% if @current_assignments.present? %>
+<h3>Current Assignments</h3>
+<ul>
+  <% @current_assignments.each do |assignment| %>
+    <p>Starting: <%= assignment.start_date.strftime("%m/%d/%Y") %></p>
+    <li><%= assignment.investigation.title %></li>
+    <% end %>   
+</ul>
+<% else %>
+  <p>No current assignments.</p>
+<% end %>
+
+</div>
+<div id="past_assignments" class="card">
+<% if @past_assignments.present? %>
+<h3>Past Assignments</h3>
+<ul>
+  <% @past_assignments.each do |assignment| %>
+    <p>Ending: <%= assignment.end_date.strftime("%m/%d/%Y") %></p>
+      <li><%= assignment.investigation.title %></li>
+    <% end %>
+  
+</ul>
+<% else %>
+  <p>No past assignments.</p>
+<% end %>
+
+
+
+</div>

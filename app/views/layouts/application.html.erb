@@ -12,15 +12,28 @@
 
   <body>
     <header>
-
+      <!-- Partials for the topbar and navigate -->
+      <%= render :partial => "partials/nav" %>
 
     </header>
     <main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12" id="main_content">
+          <!-- Flash messages appear here -->
+          <%= render :partial => "partials/flash" %>
 
-      <%= yield %>
+          <!-- MAIN CONTENT OF TEMPLATE GOES HERE -->
+          <%= yield %>
+        </div>
+      </div>
+      <%= render :partial => "partials/footer" %> 
 
+    </div>
     </main>
 
+
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>   
   </body>
 </html>

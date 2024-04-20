@@ -3,10 +3,12 @@ class OfficersController < ApplicationController
   before_action :check_login
   authorize_resource
 
-  def index
-    @active_officers = Officer.where(active: true)
-    @inactive_officers = Officer.where(active: false)
-  end
+ 
+def index 
+  @officers = Officer.all.paginate(page:params[:page]).per_page(14)
+  @active_officers = Officer.active.alphabetical.paginate(page:params[:page]).per_page(14)
+  @inactive_officers = Officer.inactive.alphabetical.paginate(page:params[:page]).per_page(14)
+end
 
   def new
     @officer = Officer.new

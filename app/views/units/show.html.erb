@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Details</title>
+</head>
+<body>
+
+<nav>
+  <%= link_to 'Edit', edit_unit_path(@unit) %> |
+  <%= link_to 'Back', units_path %>
+</nav>
+
+<div id="officers" class="card">
+  <h2>Active Officers in <%= @unit.name %> Unit</h2>
+  <% if @officers.present? %>
+    <div class="table-container">
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Active Assignments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @officers.each do |officer| %>
+            <tr>
+              <td><%= officer.name %></td>
+              <td><%= officer.rank %></td>
+              <td><%= officer.assignments.current.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-controls">
+      <%= will_paginate @officers, previous_label: '← Previous', next_label: 'Next →' %>
+    </div>
+  <% else %>
+    <p>No active officers in this unit.</p>
+  <% end %>
+</div>
+
+<div id="stats" class="card">
+  <h2>Statistics for <%= @unit.name %> Unit</h2>
+  <dl>
+    <dt>Number of Active Officers:</dt>
+    <dd><%= @unit.number_of_active_officers %></dd>
+
+    <dt>Number of Open Cases:</dt>&nbsp;&nbsp;&nbsp;<dd><%= @unit.number_of_unique_open_investigations %></dd>
+
+    <dt>Number of Closed Cases:</dt>&nbsp;&nbsp;&nbsp;<dd><%= @unit.number_of_unique_closed_investigations %></dd>
+
+    <dt>Cases Involving Batman:</dt>&nbsp;&nbsp;&nbsp;<dd><%= @unit.number_of_unique_investigations_involving_batman %></dd>
+  </dl>
+</div>
+
+</body>
+</html>
