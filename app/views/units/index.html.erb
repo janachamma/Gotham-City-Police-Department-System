@@ -1,9 +1,15 @@
+
+
 <!-- Units index view -->
-<h1> Active Units in GCPD</h1>
-<% @active_units.each do |unit| %>
-  <h2><%= link_to unit.name, unit %></h2>
-  <p>Headquarters: <%= unit.name %></p>
-  <p>
-    <%= unit.name %> - <%= unit.active ? 'Yes' : 'No' %>
-  </p>
+<h1>Active Units in GCPD</h1>
+<% if @active_units.present? %>
+  <% @active_units.each do |unit| %>
+    <h2><%= link_to unit.name, unit %></h2>
+    <p>Headquarters: <%= unit.name %></p>
+    <p>
+      <%= unit.name %> - <%= unit.active? ? 'Yes' : 'No' %>
+    </p>
+  <% end %>
+<% else %>
+  <p>No active units available.</p>
 <% end %>

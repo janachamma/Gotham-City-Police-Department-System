@@ -1,7 +1,5 @@
 <h1>Details for <%= @officer.name %></h1>
-<p><strong>
-<%= link_to 'Add a new assignment', new_assignment_path(@officer) %> 
-</strong></p>
+
 <div id="officers" class="card">
   <h2> Officer Information for <%= @officer.proper_name %>  </h2>
   <% officer = @officer %>
@@ -20,10 +18,13 @@
   <% @current_assignments.each do |assignment| %>
     <p>Starting: <%= assignment.start_date.strftime("%m/%d/%Y") %></p>
     <li><%= assignment.investigation.title %></li>
-    <% end %>   
+    <% end %>  
+    <p><%= link_to 'Add a new assignment', new_assignment_path(officer_id: @officer.id) %> </p>
+ 
 </ul>
 <% else %>
   <p>No current assignments.</p>
+  <p><%= link_to 'Add a new assignment', new_assignment_path(officer_id: @officer.id) %> </p>
 <% end %>
 
 </div>
@@ -40,7 +41,6 @@
 <% else %>
   <p>No past assignments.</p>
 <% end %>
-
 
 
 </div>
