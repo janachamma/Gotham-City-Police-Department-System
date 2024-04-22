@@ -28,6 +28,7 @@ Feature: Read units -- basic
   Scenario: The unit name is a link to details
     When I go to the units page
     And I click on the link "Homicide"
+    Then show me the page 
     Then I should see "There are no active officers currently in this unit"
 
 

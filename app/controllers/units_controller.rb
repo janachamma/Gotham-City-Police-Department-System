@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
 
   # GET /units/:id
   def show
-    @officers = @unit.officers.alphabetical.paginate(page:params[:page]).per_page(10)
+    @officers = @unit.officers.active.alphabetical.paginate(page:params[:page]).per_page(10)
 
   end
 
