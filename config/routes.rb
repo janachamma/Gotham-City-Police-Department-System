@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       member do
         patch 'close'
       end
+  resources :suspects, only: [:new, :create]
+
     end
     resources :sessions, only: [:new, :create, :destroy]
 

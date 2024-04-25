@@ -12,7 +12,7 @@ class InvestigationsController < ApplicationController
         @unassigned_cases = Investigation.unassigned
     end
   
-    # GET /investigations/new
+    # GET /investigations/new-
     def new
       @investigation = Investigation.new
     end
@@ -31,8 +31,9 @@ class InvestigationsController < ApplicationController
     # GET /investigations/:id
     def show
   @investigation = Investigation.find(params[:id])
-  @current_assignments = @investigation.assignments.where('start_date <= ? AND end_date >= ?', Date.today, Date.today)
-
+  @current_assignments = @investigation.assignments.current.chronological
+  @current_officers= @current_assignments.map{|o| o.officer}
+  @current_suspects = @investigation.suspects.current.alphabetical 
 end
 
   

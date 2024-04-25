@@ -1,0 +1,165 @@
+html {
+  font-family: 'Creepster', cursive; /* This is a horror-themed font. Make sure to include it in your HTML via Google Fonts or similar */
+}
+
+/********** TOPBAR & NAV ********/
+#topbar {
+  background-color: #582424; 
+  padding-top: 5px;
+  color: #ff4500; 
+}
+
+#nav {
+  background-color: #431d1d; 
+  height: 154px;
+  background-image: url('file:///home/jchamma/Downloads/Gotham_Police.webp'); /* Add your image URL here */
+   background-size: cover; 
+   background-position: center;
+}
+#nav ul a {
+  color: #dcc4bb;
+  font-size: 1.2rem;
+  text-decoration: none; 
+}
+
+/********** FLASH MSGS ********/
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px;
+  border-radius: 5px; 
+}
+#flash_notice {
+  background-color: #263238; /* Dark, muted color */
+  border: 1px solid #37474f;
+  color: #cfd8dc; /* Ghostly text color */
+}
+
+#flash_error, #flash_alert {
+  background-color: #4e342e; /* Dark brown for a grim look */
+  border: 1px solid #6d4c41;
+  color: #ffab91; /* Light red for visibility */
+}
+
+/********** FOOTER ********/
+#footer {
+  background-color:  #431d1d;  /* Dark maroon */
+  color: #c2b2ac; /* Blood orange color text */
+  line-height: 2rem;
+}
+
+#footer a {
+  color: #ff4500; /* Blood orange links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+/********** TABLES ********/
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: #424242; /* Dark grey for rows */
+}
+
+table.striped > tbody > tr:nth-child(even) {
+  background-color: #616161; /* Slightly lighter grey for alternating rows */
+}
+
+table.highlight > tbody > tr:hover {
+  background-color: #ff8a65; /* A muted red for hovering */
+}
+
+/********** BUTTONS ********/
+.btn {
+  background-color: #bf360c; /* Deep red for buttons */
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #d84315; /* Slightly brighter red on hover */
+}
+
+.btn-secondary {
+  background-color: #455a64; /* Dark blue-grey for secondary buttons */
+  color: #cfd8dc; /* Ghostly text color */
+}
+
+.btn-secondary:hover {
+  background-color: #546e7a; /* Slightly lighter blue-grey on hover */
+}
+
+.btn-alert {
+  background-color: #b71c1c; /* Bright red for alert buttons */
+}
+
+.btn-alert:hover {
+  background-color: #c62828; /* Slightly lighter red on hover */
+}
+
+/********** FORMS ********/
+/* Adjust the form elements like switches and pickers to match the horror theme */
+/* ... */
+
+
+.media img {
+    filter: grayscale(100%); /* Make images black and white for a vintage horror look */
+    border-radius: 5px; /* Soft rounded corners for a subtle effect */
+  }
+  
+  .media video {
+    filter: sepia(50%) brightness(50%); /* Dark, eerie tone for videos */
+    border: 3px solid #582424; /* Dark maroon border to match the topbar */
+  }
+  
+  .media-icon {
+    color: #ff4500; /* Blood orange icons */
+    transition: transform 0.3s ease; /* Smooth transformation on hover */
+  }
+  
+  .media-icon:hover {
+    transform: scale(1.2); /* Enlarge icons on hover for emphasis */
+  }
+  
+  /********** IMAGES AND ICONS WITH DARK TONES ********/
+  .img-darken:hover {
+    filter: brightness(50%); /* Darken images on hover to add a spooky effect */
+  }
+  
+  .icon-ghostly {
+    filter: drop-shadow(2px 2px 5px #000); /* Shadow for a ghostly appearance */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  .icon-ghostly:hover {
+    color: #cfd8dc; /* Ghostly text color on hover */
+  }
+  
+
+/********** CARDS ********/
+/* Add a shadow to card elements for a spooky depth effect */
+.card {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: #ff4500; /* Blood orange for card actions */
+}
+
+/********** TABS ********/
+/* Adjust tab colors for the horror theme */
+.tabs .tab a.active {
+  color: #ff8a65;
+}
+
+.tabs .tab a:hover {
+  color: #ffab91;
+}
+
+.tabs .tab a {
+  color: #cfd8dc; /* Ghostly text color */
+}
+
+.tabs .indicator {
+  background-color: #ff4500; /* Blood orange indicator */
+}
+
+/********** FLASH MSGs ********/
+/* Style the flash messages to match the horror theme */
+/* ... */
+

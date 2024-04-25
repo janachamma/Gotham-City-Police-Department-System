@@ -1,1 +1,30 @@
+
 <%= react_component("Investigation", { investigationId: params[:id] }) %>
+<h2>Suspects</h2>
+<div class="suspects-list">
+  <% if @current_suspects.present? %>
+    <ul>
+      <% for suspect in @current_suspects %>
+      <li>Added on: <%= suspect.added_on %>, Name: <%= suspect.criminal.name %></li>   
+         <% end %>
+    </ul>
+  <% else %>
+    <p>No suspects found.</p>
+  <% end %>
+  <%= link_to 'Add Suspect', new_investigation_suspect_path(@investigation), class: 'btn' %>
+  </div>
+
+
+<h2>Officers Assigned</h2>
+<div class="officers-list">
+  <ul>
+    <% if @current_officers.present? %>
+      <% for officer in @current_officers %>
+        <li><%= officer.rank %> - <%= officer.first_name %> <%= officer.last_name %></li>
+      <% end %>
+    <% else %>
+      <p>No officers assigned.</p>
+    <% end %>
+  </ul>
+</div>
+<%= link_to "Back" , investigation_path(@investigation), class: "btn-btn-primary" %>

@@ -14,11 +14,11 @@ class CriminalsController < ApplicationController
   end
 
   def create
-    new_criminal = Criminal.new(criminal_params)
+  @criminal = Criminal.new(criminal_params)
     
-    if new_criminal.save
-      flash[:notice] = "Successfully added #{new_criminal.first_name} #{new_criminal.last_name} to GCPD."
-      redirect_to criminal_path(new_criminal)
+    if @criminal.save
+      flash[:notice] = "Successfully added #{@criminal.first_name} #{@criminal.last_name} to GCPD."
+      redirect_to criminal_path(@criminal)
     else
       render :new
     end

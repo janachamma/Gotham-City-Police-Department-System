@@ -1,0 +1,25 @@
+<h1>All Criminals</h1>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Enhanced Powers</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @criminals.each do |criminal| %>
+      <tr>
+        <td><%= link_to criminal.proper_name, criminal_path(criminal) %></td>
+        <td><%= criminal.convicted_felon ? 'Convicted' : 'Suspect' %></td>
+        <td><%= criminal.enhanced_powers ? 'Yes' : 'No' %></td>
+        <td>
+          <%= link_to 'Edit', edit_criminal_path(criminal), class: 'btn' %>
+          <%= link_to 'Delete', criminal_path(criminal), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn red' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render partial: 'partials/add_new_object', locals: {model_name: 'criminal'} %>

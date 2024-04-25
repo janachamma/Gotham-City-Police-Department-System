@@ -7,7 +7,8 @@
       <ul>
     <% @open_investigations.each do |investigation| %>
       <li>
-        <strong>Title:</strong> <%= investigation.title %><br><br>
+      <strong>Title:</strong> <%= link_to investigation.title, investigation_path(investigation) %><br><br>
+
         <strong>Date open:</strong> <%= investigation.date_opened.strftime("%m/%d/%y") %><br><br>
       </li>
     <% end %>
@@ -15,7 +16,9 @@
 <% else %>
   <p>No open cases at this time</p>
 <% end %>
-
+<div class="card-action">
+          <a href="/investigations/new" class="btn">Create New Investigation</a>
+        </div>
    
       </div>
     </div>

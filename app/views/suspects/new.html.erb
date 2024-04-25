@@ -1,0 +1,22 @@
+<!-- app/views/suspects/new.html.erb -->
+
+
+<%= form_with(model: [@investigation, @suspect], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :criminal_id, 'Suspect Name' %>
+   <%= form.collection_select :criminal_id, Criminal.all.order(:name), :id, :name, { include_blank: 'Select a Suspect' }, { required: true }%>
+   <%= form.collection_select :investigation_id, Investigation.all.order(:title), :id, :title, { include_blank: 'Select an Investigation' }, { required: true }%>
+
+    </div>
+ 
+
+  <div class="field">
+    <%= form.label :added_on, 'Date Added' %>
+    <%= form.date_field :added_on, value: Date.today, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Add Suspect", class: 'btn' %>
+  </div>
+<% end %>

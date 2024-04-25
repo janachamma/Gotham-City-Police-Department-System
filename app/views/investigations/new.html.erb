@@ -1,0 +1,37 @@
+<%= provide(:title, 'New Investigation') %>
+<h1>New Investigation</h1>
+
+<%= form_with(model: @investigation, local: true) do |form| %>
+  <% if @investigation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@investigation.errors.count, "error") %> prohibited this investigation from being saved:</h2>
+
+      <ul>
+      <% @investigation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :investigation_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :investigation_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_opened, 'Date Opened' %>
+    <%= form.date_field :date_opened, id: :investigation_date_opened, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Investigation" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', investigations_path %>

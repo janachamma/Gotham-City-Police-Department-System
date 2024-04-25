@@ -1,0 +1,111 @@
+.digg_pagination {
+    background: #222; // Dark background
+    cursor: default;
+    border: 1px solid #444; // Darker border
+  }
+    a, span, em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px;
+      color: #c00; // Blood red text for clickable items
+      border: 1px solid #600; // Dark red borders
+    }
+    .disabled {
+      color: #555; // Grayed out for disabled
+      border: 1px solid #333; // Dark border for disabled
+    }
+    .current {
+      font-style: normal;
+      font-weight: bold;
+      background: #600; // Dark red for current page
+      color: white;
+      border: 1px solid #900; // Even darker red border
+    }
+    a {
+      text-decoration: none;
+      color: #b00; // Blood red
+    }
+  
+    .page_info {
+      background: #600; // Dark red background
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: 0.3em;
+      text-align: center;
+    }
+      b {
+        color: #fff; // White text
+        background: #900; // Darker red background
+        padding: 0.1em 0.25em;
+      }
+  
+  .apple_pagination {
+    background: #300; // Dark base
+    border: 1px solid #600; // Dark red border
+    text-align: center;
+    padding: 1em;
+    cursor: default;
+    a, span {
+      padding: 0.2em 0.3em;
+      color: #c00; // Blood red for links
+    }
+    .disabled {
+      color: #555;
+    }
+    .current {
+      font-style: normal;
+      font-weight: bold;
+      background-color: #900; // Dark red
+      display: inline-block;
+      width: 1.4em;
+      height: 1.4em;
+      line-height: 1.5;
+      border-radius: 1em;
+      text-shadow: rgba(0,0,0,0.8) 1px 1px 1px; // Shadow for depth
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      background: #b00; // Lighter red on hover
+      color: white;
+    }
+  }
+  
+  .flickr_pagination {
+    text-align: center;
+    padding: 0.3em;
+    cursor: default;
+    a, span, em {
+      padding: 0.2em 0.5em;
+      color: #c00; // Blood red text
+      border: 1px solid #600; // Dark red border
+    }
+    .disabled {
+      color: #555;
+    }
+    .current {
+      font-style: normal;
+      font-weight: bold;
+      color: #c00; // Bright red
+    }
+    a:hover, a:focus {
+      border-color: #900;
+      background: #600; // Dark red background
+      color: white;
+    }
+    .page_info {
+      color: #aaa; // Muted text for info
+      padding-top: 0.8em;
+    }
+    .previous_page, .next_page {
+      border-width: 2px;
+    }
+    .previous_page {
+      margin-right: 1em;
+    }
+    .next_page {
+      margin-left: 1em;
+    }
+  }
+  

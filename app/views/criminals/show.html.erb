@@ -1,0 +1,18 @@
+<h1>Criminal Details</h1>
+
+
+<h2><%= @criminal.proper_name %></h2>
+<% if @criminal.enhanced_powers %>
+  <p><strong>Enhanced Powers:</strong> Yes</p>
+<% else %>
+  <p><strong>Enhanced Powers:</strong> No</p>
+<% end %>
+
+<p>
+  <strong>AKA:</strong>
+  <%= @criminal.aka %>
+</p>
+<% if @suspects.present? %>
+  <h3>Suspect Count: <%= @suspects.count %></h3>
+  <!-- Display more information about the suspects if needed -->
+<% end %>
